@@ -1,0 +1,34 @@
+body { background: black; }
+
+.content{
+	background: white;
+	text-align: center;
+}
+
+.wumpus{
+	border: solid 2pt red;
+	padding: .5em;
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.content p{
+	font-size: 2em;
+}
+
+strong{
+	color: red;
+}
+
+header{
+	background-color: #660000;
+	margin 0;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
