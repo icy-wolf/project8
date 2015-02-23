@@ -1,9 +1,12 @@
 # app.rb
 require 'sinatra'
+require 'holidapi'
 
-class MyWebApp < Sinatra::Base
+class HolidaIndustriesApp < Sinatra::Base
   get '/' do
-  last_modified Time.now
-  send_file "views/index#{ rand(3) + 1 }.html"
-end
+  	t = Time.now
+    @holidays = HolidApi.get(country: 'us', year: 1993, month: 8)
+    @day = HolidApi.get(country: 'us', year: t.year, month: t.month)
+    erb :index
+  end
 end

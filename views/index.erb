@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.min.js"></script>
+    <title>Holidays</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <h1>Holidays in the United States</h1>
+      </header>
+        <h3>Holidays This Month</h3>
+        <% @day.each do |day| %>
+          <% day.each do |days| %>
+            <ul>
+              <li><strong><%= days['name'] %></strong>: <%= days['date'] %></strong></li>
+            </ul>
+          <% end %>
+        <% end %>
+        <h3>Holidays During the Month I was Born</h3>
+        <% @holidays.each do |holiday| %>
+          <ul>
+            <li><strong><%= holiday[0]['name'] %></strong>: <%= holiday[0]['date'] %></li>
+          </ul>
+        <% end %>
+        <br>
+    </div>
+  </body>
+</html>

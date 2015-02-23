@@ -1,7 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    rack (1.6.0)
+    holidapi (0.0.1)
+      httparty
+      json
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.2)
+    multi_xml (0.5.5)
+    rack (1.5.2)
     rack-protection (1.5.3)
       rack
     sinatra (1.4.5)
@@ -14,4 +22,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  holidapi
+  rack (= 1.5.2)
   sinatra (~> 1.4.5)
