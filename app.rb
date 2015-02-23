@@ -9,8 +9,8 @@ class HolidaIndustriesApp < Sinatra::Base
   		t = Time.now
     	@day = HolidApi.get(country: 'us', year: t.year, month: t.month)
     else
-    	date = params['select_date'].split("-")
-    	@day = HolidApi.get(country: params['country'], year: date[0], month: date[1])
+    	date = params['select_date'].split("/")
+    	@day = HolidApi.get(country: params['country'], year: date[2], month: date[0])
     end
     @holidays = HolidApi.get(country: 'us', year: 1993, month: 8)
     erb :index

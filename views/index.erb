@@ -2,8 +2,7 @@ l<!doctype html>
 <html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
     <title>Holidays</title>
   </head>
   <body>
@@ -13,19 +12,24 @@ l<!doctype html>
       </header>
         
         <form>
-          <input name="select_date" type="date">
+          <span>Date: <input name="select_date" type="text" id="datepicker"></span>
+          <br>
           <select name="country">
             <option value="">Country...</option>
             <option value="BE">Belgium</option>
             <option value="BR">Brazil</option>
             <option value="GB">Great Britian</option>
             <option value="US">United States of America</option>
-            
           </select>
+          <br>
           <button type="submit">Click for holidays</button>
         </form>
 
-        <h3>Holidays For The Selected Month</h3>
+        <% if params.any? %>
+          <h3>Holidays For The Selected Month</h3>
+        <% else %>
+          <h3>Holidays For This Month</h3>
+        <% end %>
         <% @day.each do |day| %>
           <% day.each do |days| %>
             <ul>
@@ -42,5 +46,14 @@ l<!doctype html>
         <br>
     
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(function() {
+      $( "#datepicker" ).datepicker();
+      });
+    </script>
   </body>
 </html>

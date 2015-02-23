@@ -1,9 +1,12 @@
 body 
 {
 	background-color: #003600;
-	width: 700px;
     margin-left: auto;
     margin-right: auto; 
+}
+
+.container {
+	width: 700px;
 }
 
 .content
@@ -44,4 +47,8 @@ img
 {
 	text-align: left;
 	margin-top: 0;
+}
+
+.h3 {
+	clear: both;
 }
