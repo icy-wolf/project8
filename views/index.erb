@@ -1,7 +1,8 @@
-<!doctype html>
+l<!doctype html>
 <html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <title>Holidays</title>
   </head>
@@ -10,7 +11,21 @@
       <header class="page-header">
         <h1>Holidays in the United States</h1>
       </header>
-        <h3>Holidays This Month</h3>
+        
+        <form>
+          <input name="select_date" type="date">
+          <select name="country">
+            <option value="">Country...</option>
+            <option value="BE">Belgium</option>
+            <option value="BR">Brazil</option>
+            <option value="GB">Great Britian</option>
+            <option value="US">United States of America</option>
+            
+          </select>
+          <button type="submit">Click for holidays</button>
+        </form>
+
+        <h3>Holidays For The Selected Month</h3>
         <% @day.each do |day| %>
           <% day.each do |days| %>
             <ul>
@@ -25,6 +40,7 @@
           </ul>
         <% end %>
         <br>
+    
     </div>
   </body>
 </html>
