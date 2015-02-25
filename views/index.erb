@@ -25,18 +25,31 @@ l<!doctype html>
           <button type="submit">Click for holidays</button>
         </form>
 
+        <!-- Header -->
         <% if params.any? %>
-          <h3>Holidays For The Selected Month</h3>
+          <h3>Holidays For The Selected Day</h3>
         <% else %>
           <h3>Holidays For This Month</h3>
         <% end %>
-        <% @day.each do |day| %>
-          <% day.each do |days| %>
-            <ul>
-              <li><strong><%= days['name'] %></strong>: <%= days['date'] %></strong></li>
-            </ul>
+
+        <!-- If Day doesn't exist, its a deeper array -->
+        <% if params.nil? %>
+          <% @day.each do |day| %>
+            <% day.each do |days| %>
+              <ul>
+                <li><strong><%= days['name'] %></strong>: <%= days['date'] %></strong></li>
+              </ul>
+            <% end %>
+          <% end %>
+        <!-- else its a single day. shallow array -->
+        <% else %>
+          <% @day.each do |day| %>
+              <ul>
+                <li><strong><%= day['name'] %></strong>: <%= day['date'] %></strong></li>
+              </ul>
           <% end %>
         <% end %>
+
         <h3>Holidays During the Month I was Born</h3>
         <% @holidays.each do |holiday| %>
           <ul>
