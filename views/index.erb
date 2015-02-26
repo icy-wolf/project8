@@ -12,28 +12,28 @@ l<!doctype html>
       </header>
         
         <form>
-          <span>Date: <input name="select_date" type="text" id="datepicker" required></span>
+          <span>Date: <input name="select_date" type="text" id="datepicker" value="<%= params['select_date'] %>" required></span>
           <br>
           <select name="country">
-            <option value="">Country...</option>
-            <option value="BE">Belgium</option>
-            <option value="BR">Brazil</option>
-            <option value="GB">Great Britian</option>
-            <option value="US">United States of America</option>
+            <option value="" <%= 'selected="selected"' if params['country'] == '' %>>Country...</option>
+            <option value="BE" <%= 'selected="selected"' if params['country'] == 'BE' %>>Belgium</option>
+            <option value="BR" <%= 'selected="selected"' if params['country'] == 'BR' %>>Brazil</option>
+            <option value="GB" <%= 'selected="selected"' if params['country'] == 'GB' %>>Great Britian</option>
+            <option value="US" <%= 'selected="selected"' if params['country'] == '' %>>United States of America</option>
           </select>
           <br>
           <button type="submit">Click for holidays</button>
         </form>
 
-        <!-- Header -->
-        <% if params.any? %>
-          <h3>Holidays For The Selected Day</h3>
-        <% else %>
-          <h3>Holidays For This Month</h3>
-        <% end %>
-
         <!-- If Day doesn't exist, its a deeper array -->
-        <% if params.nil? %>
+        <% if params.empty? || params['select_date'].split("/")[1].empty?%>
+          <!-- Header -->
+          <% if params.any? %>
+            <h3>Holidays For The Selected Month</h3>
+          <% else %>
+            <h3>Holidays For This Month</h3>
+          <% end %>
+          <!-- Holidays of the month-->
           <% @day.each do |day| %>
             <% day.each do |days| %>
               <ul>
@@ -41,8 +41,10 @@ l<!doctype html>
               </ul>
             <% end %>
           <% end %>
-        <!-- else its a single day. shallow array -->
+        <!-- else it's a single day. shallow array -->
         <% else %>
+          <h3>Holidays For The Selected Day</h3>
+          <!-- Holiday of the day-->
           <% @day.each do |day| %>
               <ul>
                 <li><strong><%= day['name'] %></strong>: <%= day['date'] %></strong></li>
@@ -50,6 +52,7 @@ l<!doctype html>
           <% end %>
         <% end %>
 
+        <!-- Nicole's Birth Month -->
         <h3>Holidays During the Month I was Born</h3>
         <% @holidays.each do |holiday| %>
           <ul>
@@ -64,9 +67,8 @@ l<!doctype html>
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-      $(function() {
-      $( "#datepicker" ).datepicker();
-      });
+      //If it were any more complex, I'd make a .js file. 
+      $(function() { $("#datepicker").datepicker(); });
     </script>
   </body>
 </html>
